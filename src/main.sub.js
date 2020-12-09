@@ -24,7 +24,7 @@ function create(tag_name, attrs, onsuccess, onerror){
 /**
  * Creates `<script>` and retunrs Promise.
  * @param {url} url `src` attribute for `<script>`
- * @param {script_properties} attrs 
+ * @param {script_properties} [attrs=attrs_script_default] 
  * @returns {Promise}
  * @.then
  * @.catch {Error}
@@ -38,7 +38,7 @@ export function script(url, attrs= attrs_script_default){
 /**
  * Creates `<link>` (for loading **CSS** stylesheet) and retunrs Promise.
  * @param {url} url `href` attribute for `<link>`
- * @param {link_properties} attrs 
+ * @param {link_properties} [attrs=attrs_link_default] 
  * @returns {Promise}
  * @.then
  * @.catch {Error}
