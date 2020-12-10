@@ -1,3 +1,9 @@
+/*jsondoc={
+    "version": "1.8.1",
+    "script_name": "gulp_place_type",
+    "description": "Temporaly workaround for type definition for [jaandrle/gulp-place](https://github.com/jaandrle/gulp-place).",
+    "root_path": "gulp_path"
+}*/
 /**
  * This is build-time pattern/"function" pasting file(s)/variable(s) content.
  * @global

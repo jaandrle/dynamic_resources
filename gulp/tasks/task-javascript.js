@@ -2,12 +2,12 @@
 /*jsondoc={
     "version": "0.1.4",
     "script_name": "gulp_task_javascript_lib",
-    "description": "Gulp task for processing `*.js` in `app.directories.src`. It also validate non `*.min.js` output files (in `app.directories.bin`). More description __TBD__."
+    "description": "Gulp task for processing `*.js` in `app.directories.src`. It also validate non `*.min.js` output files (in `app.directories.bin`). More description __TBD__.",
     "root_path": "gulp_tasks"
 }*/
 module.exports= function({gulp, scripts, $g, $o, app, cordova_target_device, error}){
     const /* files source and destination */
-        [ folder, files_pattern, files_not_pattern ]= [ app.directories.src, "*.js", "*.sub.js" ],
+        [ folder, files_pattern, files_not_pattern ]= [ app.directories.src+"**/", "*.js", "*.sub.js" ],
         destination= app.directories.bin;
     const [jshint_cmd, ...jshint_rest]= scripts.jshint.split(" ");
     /* jshint -W061 */const gulp_place= $g.place({ variable_eval: (str)=> eval(str), filesCleaner: require("../gulp_cleanJSHINT.js") });/* jshint +W061 */
