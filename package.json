@@ -57,7 +57,7 @@
         "config": {
             "gulp_path": "gulp/",
             "gulp_tasks": "gulp/tasks/",
-            "jsdoc2md_modifications_path": "src_docs/modifications"
+            "jsdoc2md_modifications_path": "src_docs/modifications/"
         },
         "scripts": {
             "gulpfile": "~1.1.4",
