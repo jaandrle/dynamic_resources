@@ -56,7 +56,8 @@
     "jaaJBT": {
         "config": {
             "gulp_path": "gulp/",
-            "gulp_tasks": "gulp/tasks/"
+            "gulp_tasks": "gulp/tasks/",
+            "jsdoc2md_modifications_path": "src_docs/modifications"
         },
         "scripts": {
             "gulpfile": "~1.1.4",
@@ -64,10 +65,13 @@
             "gulp_task_javascript_lib": "~0.1.5",
             "gulp_task_default": "~1.0.1",
             "gulp_place_type": "~1.8.1",
-            "jsconfig": "~1.0.0"
+            "jsconfig": "~1.0.0",
+            "jsdoc2md__libs_gulp_task": "~1.0.0",
+            "jsdoc2md__libs_modifications": "~1.0.0"
         },
         "resourses": [
-            "https://raw.githubusercontent.com/jaandrle/jaaJBT/master/"
+            "https://raw.githubusercontent.com/jaandrle/jaaJBT/master/",
+            "https://raw.githubusercontent.com/jaandrle/jsdoc2md-jsonDoc--partial-helpers/main/"
         ],
         "rename": {}
     },
