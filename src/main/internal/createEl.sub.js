@@ -4,6 +4,8 @@ gulp_place("types/script_properties.type.sub.js", "file_once");
 gulp_place("./document_shortcuts.sub.js", "file_once");/* global dCE */
 /**
  * Creates element (eg. `<script>`).
+ * @memberof dynamic_resources
+ * @inner
  * @param {nodeName} tag_name Typically 'script'/'link'
  * @param {script_properties|link_properties} attrs Rest of the script attributes.
  * @param {Function} onsuccess Callback when tag successfully loaded.

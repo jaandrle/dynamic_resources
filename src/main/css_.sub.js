@@ -5,8 +5,10 @@ gulp_place("./internal/attrs_link_default.sub.js", "file_once");/* global attrs_
 gulp_place("./internal/createEl.sub.js", "file_once");/* global createEl */
 /**
  * Creates `<link>` (for loading **CSS** stylesheet) and retunrs Promise.
+ * @memberof dynamic_resources
+ * @public
  * @param {url} url `href` attribute for `<link>`
- * @param {link_properties} [attrs=null] Default `<link>` properties are `href` (based on `url`) and {@link attrs_link_default}.
+ * @param {link_properties} [attrs='null'] Default `<link>` properties are `href` (based on `url`) and {@link dynamic_resources~attrs_link_default}.
  * @returns {Promise}
  * @.then
  * @.catch {Error}

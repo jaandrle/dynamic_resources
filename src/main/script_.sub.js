@@ -5,8 +5,10 @@ gulp_place("./internal/attrs_script_default.sub.js", "file_once");/* global attr
 gulp_place("./internal/createEl.sub.js", "file_once");/* global createEl */
 /**
  * Creates `<script>` and retunrs Promise.
+ * @memberof dynamic_resources
+ * @public
  * @param {url} url `src` attribute for `<script>`
- * @param {script_properties} [attrs=null] Default properties for `<script>` are `src` (based on `url`) and {@link attrs_script_default}.
+ * @param {script_properties} [attrs='null'] Default properties for `<script>` are `src` (based on `url`) and {@link dynamic_resources~attrs_script_default}.
  * @returns {Promise}
  * @.then
  * @.catch {Error}
