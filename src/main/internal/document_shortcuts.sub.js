@@ -1,1 +1,0 @@
-const { createElement: dCE, body: dB, head: dH }= document;

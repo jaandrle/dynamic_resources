@@ -55,7 +55,7 @@ It reflects the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Eleme
 ### dynamic_resources.css\_(url, [attrs]) ⇒ <code>Promise</code>
 >Creates `<link>` (for loading **CSS** stylesheet) and retunrs Promise.
 
-**Kind**: static method of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources.css_" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L65" title="dynamic_resources-namespace.js:65"><small>(defined@65)</small></a>  
+**Kind**: static method of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources.css_" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L63" title="dynamic_resources-namespace.js:63"><small>(defined@63)</small></a>  
 **Access**: public  
 **.then**:   
 **.catch**: <code>Error</code>  
@@ -73,7 +73,7 @@ It reflects the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Eleme
 ### dynamic_resources.script\_(url, [attrs]) ⇒ <code>Promise</code>
 >Creates `<script>` and retunrs Promise.
 
-**Kind**: static method of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources.script_" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L97" title="dynamic_resources-namespace.js:97"><small>(defined@97)</small></a>  
+**Kind**: static method of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources.script_" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L94" title="dynamic_resources-namespace.js:94"><small>(defined@94)</small></a>  
 **Access**: public  
 **.then**:   
 **.catch**: <code>Error</code>  
@@ -89,7 +89,7 @@ It reflects the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Eleme
 <a name="dynamic_resources..attrs_link_default"></a>
 
 ### dynamic_resources~attrs\_link\_default
-**Kind**: inner constant of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources..attrs_link_default" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L26" title="dynamic_resources-namespace.js:26"><small>(defined@26)</small></a>  
+**Kind**: inner constant of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources..attrs_link_default" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L25" title="dynamic_resources-namespace.js:25"><small>(defined@25)</small></a>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -113,7 +113,7 @@ Not needed (see [\<script\>: The Script element - HTML: HyperText Markup Languag
 - `type: "text/javascript"`: by default => reduntant info
 - `charset: "utf-8"`: deprecated
 
-**Kind**: inner constant of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources..attrs_script_default" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L85" title="dynamic_resources-namespace.js:85"><small>(defined@85)</small></a>  
+**Kind**: inner constant of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources..attrs_script_default" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L82" title="dynamic_resources-namespace.js:82"><small>(defined@82)</small></a>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -134,7 +134,7 @@ Not needed (see [\<script\>: The Script element - HTML: HyperText Markup Languag
 ### dynamic_resources~createEl(tag_name, attrs, onsuccess, onerror) ⇒ <code>HTMLScriptElement</code> \| <code>HTMLLinkElement</code>
 >Creates element (eg. `<script>`).
 
-**Kind**: inner method of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources..createEl" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L49" title="dynamic_resources-namespace.js:49"><small>(defined@49)</small></a>  
+**Kind**: inner method of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources..createEl" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L47" title="dynamic_resources-namespace.js:47"><small>(defined@47)</small></a>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -152,7 +152,7 @@ Not needed (see [\<script\>: The Script element - HTML: HyperText Markup Languag
 >Is a [DOMString](https://developer.mozilla.org/en-US/docs/Web/API/DOMString) representing the URL of an external resource.
 It reflects the [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-src) attribute (similary for `href`).
 
-**Kind**: global typedef <a name="url" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L7" title="dynamic_resources-namespace.js:7"><small>(defined@7)</small></a>  
+**Kind**: global typedef <a name="url" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L6" title="dynamic_resources-namespace.js:6"><small>(defined@6)</small></a>  
 
 * * *
 
@@ -161,7 +161,7 @@ It reflects the [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Elemen
 ## link\_properties : <code>Object</code>
 >Is a object representing all [HTMLLinkElement properties](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLinkElement#Properties)!
 
-**Kind**: global typedef <a name="link_properties" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L13" title="dynamic_resources-namespace.js:13"><small>(defined@13)</small></a>  
+**Kind**: global typedef <a name="link_properties" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L12" title="dynamic_resources-namespace.js:12"><small>(defined@12)</small></a>  
 
 * * *
 
@@ -170,7 +170,7 @@ It reflects the [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Elemen
 ## nodeName : <code>String</code>
 >Eg. 'script', see [Node.nodeName - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeName).
 
-**Kind**: global typedef <a name="nodeName" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L27" title="dynamic_resources-namespace.js:27"><small>(defined@27)</small></a>  
+**Kind**: global typedef <a name="nodeName" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L26" title="dynamic_resources-namespace.js:26"><small>(defined@26)</small></a>  
 
 * * *
 
@@ -179,7 +179,7 @@ It reflects the [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Elemen
 ## script\_properties : <code>Object</code>
 >Is a object representing all [HTMLScriptElement properties](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement#Properties)!
 
-**Kind**: global typedef <a name="script_properties" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L33" title="dynamic_resources-namespace.js:33"><small>(defined@33)</small></a>  
+**Kind**: global typedef <a name="script_properties" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L32" title="dynamic_resources-namespace.js:32"><small>(defined@32)</small></a>  
 
 * * *
 

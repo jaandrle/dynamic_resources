@@ -1,4 +1,3 @@
-gulp_place("./internal/document_shortcuts.sub.js", "file_once");/* global dH */
 gulp_place("types/url.type.sub.js", "file_once");
 gulp_place("types/link_properties.type.sub.js", "file_once");
 gulp_place("./internal/attrs_link_default.sub.js", "file_once");/* global attrs_link_default */
@@ -15,6 +14,6 @@ gulp_place("./internal/createEl.sub.js", "file_once");/* global createEl */
  */
 export function css_(url, attrs= null){
     return new Promise(function(resolve,reject){
-        dH.appendChild(createEl("link", Object.assign( { href: url }, attrs_link_default, attrs ), resolve, reject));
+        document.head.appendChild(createEl("link", Object.assign( { href: url }, attrs_link_default, attrs ), resolve, reject));
     });
 }

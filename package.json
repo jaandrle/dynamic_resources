@@ -5,7 +5,8 @@
     "main": "gulpfile.js",
     "sequence": [
         "javascript",
-        "doc"
+        "doc",
+        "examples"
     ],
     "app_keys_map": [
         [
@@ -34,7 +35,8 @@
     "directories": {
         "gulp": "gulp/",
         "src": "src/",
-        "bin": "bin/"
+        "bin": "bin/",
+        "doc": "docs/"
     },
     "repository": {
         "type": "git",

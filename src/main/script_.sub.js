@@ -1,4 +1,3 @@
-gulp_place("./internal/document_shortcuts.sub.js", "file_once");/* global dB */
 gulp_place("types/url.type.sub.js", "file_once");
 gulp_place("types/script_properties.type.sub.js", "file_once");
 gulp_place("./internal/attrs_script_default.sub.js", "file_once");/* global attrs_script_default */
@@ -15,6 +14,6 @@ gulp_place("./internal/createEl.sub.js", "file_once");/* global createEl */
  */
 export function script_(url, attrs= null){
     return new Promise(function(resolve,reject){
-        dB.appendChild(createEl("script", Object.assign( { src: url }, attrs_script_default, attrs ), resolve, reject));
+        document.body.appendChild(createEl("script", Object.assign( { src: url }, attrs_script_default, attrs ), resolve, reject));
     });
 }

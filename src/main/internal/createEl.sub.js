@@ -1,7 +1,6 @@
 gulp_place("types/nodeName.type.sub.js", "file_once");
 gulp_place("types/link_properties.type.sub.js", "file_once");
 gulp_place("types/script_properties.type.sub.js", "file_once");
-gulp_place("./document_shortcuts.sub.js", "file_once");/* global dCE */
 /**
  * Creates element (eg. `<script>`).
  * @memberof dynamic_resources
@@ -13,7 +12,7 @@ gulp_place("./document_shortcuts.sub.js", "file_once");/* global dCE */
  * @returns {HTMLScriptElement|HTMLLinkElement}
  */
 function createEl(tag_name, attrs, onsuccess, onerror){
-    const element= Object.assign(dCE(tag_name), attrs);
+    const element= Object.assign(document.createElement(tag_name), attrs);
     element.onload= onsuccess;
     element.onerror= element.onabort= onerror;
     return element;

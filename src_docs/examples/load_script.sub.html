@@ -1,0 +1,18 @@
+<h2>Scripts loading</h2>
+<p>In this test/example you can see async loading of `test1.js`. You can try to change to `test2.js`.</p>
+<ul>
+    <li><a href="gulp_place('app.homepage.replace(`#readme`, `/blob/master/`)', 'variable')gulp_place('app.directories.doc', 'variable')gulp_place('app.name', 'variable')-namespace.md#dynamic_resources.sctript_" target="_blank"><code>sctript_</code></a></li>
+    <li><a href="test1.js" target="_blank">test1.js</a></li>
+    <li><a href="test2.js" target="_blank">test2.js</a></li>
+</ul>
+<div class="output"></div>
+<script contenteditable="">
+example(function({ logOut }){
+    
+    dynamic_resources.script_("test1.js")
+    .then(()=> logOut(message_text))
+    .catch(logOut.bind(null, "Error"));
+
+});
+</script>
+<!-- example source links -->

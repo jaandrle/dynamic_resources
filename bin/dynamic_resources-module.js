@@ -1,4 +1,3 @@
-const { createElement: dCE, body: dB, head: dH }= document;
 /**
  * Is a [DOMString](https://developer.mozilla.org/en-US/docs/Web/API/DOMString) representing the URL of an external resource.
  * It reflects the [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-src) attribute (similary for `href`).
@@ -30,7 +29,6 @@ const attrs_link_default= Object.freeze({ rel: "stylesheet", type: "text/css" })
  * @typedef {Object} script_properties
  * @global
  */
-
 /**
  * Creates element (eg. `<script>`).
  * @memberof dynamic_resources
@@ -42,7 +40,7 @@ const attrs_link_default= Object.freeze({ rel: "stylesheet", type: "text/css" })
  * @returns {HTMLScriptElement|HTMLLinkElement}
  */
 function createEl(tag_name, attrs, onsuccess, onerror){
-    const element= Object.assign(dCE(tag_name), attrs);
+    const element= Object.assign(document.createElement(tag_name), attrs);
     element.onload= onsuccess;
     element.onerror= element.onabort= onerror;
     return element;
@@ -59,10 +57,9 @@ function createEl(tag_name, attrs, onsuccess, onerror){
  */
 export function css_(url, attrs= null){
     return new Promise(function(resolve,reject){
-        dH.appendChild(createEl("link", Object.assign( { href: url }, attrs_link_default, attrs ), resolve, reject));
+        document.head.appendChild(createEl("link", Object.assign( { href: url }, attrs_link_default, attrs ), resolve, reject));
     });
 }
-
 
 
 
@@ -91,6 +88,6 @@ const attrs_script_default= Object.freeze({ async: true, crossOrigin: "anonymous
  */
 export function script_(url, attrs= null){
     return new Promise(function(resolve,reject){
-        dB.appendChild(createEl("script", Object.assign( { src: url }, attrs_script_default, attrs ), resolve, reject));
+        document.body.appendChild(createEl("script", Object.assign( { src: url }, attrs_script_default, attrs ), resolve, reject));
     });
 }

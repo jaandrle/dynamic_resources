@@ -1,0 +1,1 @@
+window.message_text= "`test1.js` loaded";
