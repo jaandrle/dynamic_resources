@@ -3,14 +3,14 @@ Yet another lightweight promise-based scripts/stylesheets loader (no support for
 
 This library provide `Promise` way of loading resources such as *JavaScripts* and *CSSs*.
 
-Firstly, it is possible you don’t need special library…
-
 ## Content
 - [Vanilla JavaScript](#Vanilla-JavaScript)
 - [Another libraries](#Another-libraries)
 - [This library](#This-library)
 - [Usage](#Usage)
 - [Documentation and examples](#Documentation-and-examples)
+
+Firstly, it is possible you don’t need special library…
 
 ## Vanilla JavaScript
 For loading scripts, you can use [Dynamic Imports | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports) – use `import`:
