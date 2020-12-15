@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>gulp_place("app.name", "variable") — Examples</title>
+    <link rel="stylesheet" href="examples.css">
+    <script src="gulp_place('lib_file', 'variable')"></script>
+</head>
+<body>
+    <script>
+        let global_currentScript= null;
+        const getTargetEls= (function(){
+            return function(previousElementSibling){
+                if(!previousElementSibling.classList.contains("pres")) throw new Error(`${previousElementSibling} is not excepted element (with \`className="pres"\` and containig pres such as \`output\`)!`);
+                return Array.from(previousElementSibling.children).filter(({ className })=> className).reduce((o, curr)=> (o[getPreClassName(curr)]= curr, o), {});
+            };
+            function getPreClassName(el){ return Array.from(el.classList).filter(cl=> { switch (cl){ case "output": case "input": case "test": return true; } return false; })[0]+"_el"; }
+        })();
+        const example= (function(){
+            const store= new WeakMap();
+            function example(scriptCode){
+                const currentScript= document.currentScript || global_currentScript;
+                if(store.has(currentScript)) return runExample(scriptCode, store.get(currentScript));
+                const { previousElementSibling }= currentScript;
+                const pres_els= getTargetEls(previousElementSibling);
+                const params= Object.assign({
+                    logOut(...logs){
+                        return logs.map(toP).map(Node.prototype.appendChild.bind(pres_els.output_el));
+                    },
+                    loadInitData(){
+                        return JSON.parse(pres_els.input_el.textContent.trim());
+                    },
+                    invokeTest(input_obj){
+                        if(!pres_els.test_el) throw new Error("No `<pre class=\"test\">` defined!!!");
+                        const referential_obj= JSON.parse(pres_els.test_el.textContent.trim());
+                        const output= Object.keys(input_obj)
+                        .map(key=> [ key, JSON.stringify(input_obj[key])===referential_obj[key] ])
+                        .reduce((results, [ key, i_result ])=> (results[Number(i_result)].push(key), results), [ [], [] ]);
+                        console.error(`These tests failed: ${ output[0] }`);
+                        console.log(`%cThese tests passed: ${ output[1] }`, "color: lightgreen;");
+                        return true;
+                    }
+                }, pres_els);
+                currentScript.onkeyup= debounce(()=> (global_currentScript= currentScript, eval(currentScript.textContent)));
+                store.set(currentScript, params);
+                runExample(scriptCode, params);
+            }
+            function runExample(fun, params){
+                params.output_el.innerHTML= "";
+                if(document.readyState!=="complete") return document.addEventListener("DOMContentLoaded", fun.bind(null, params));
+                return fun(params);
+            }
+            function toP(text){ return Object.assign(document.createElement("P"), { textContent: JSON.stringify(text) }); }
+            return example;
+        })();
+        function debounce(fun, delay= 250){
+            let time_out_id;
+            return function debounce_inner(...args){
+                if(time_out_id) clearTimeout(time_out_id);
+                time_out_id= setTimeout(fun, delay, ...args);
+            }
+        }
+    </script>
+    <article>
+        <h1>gulp_place("app.name", "variable") — Examples</h1>
+        <a href="gulp_place('app.homepage', 'variable')">⇠ Go back to GitHub repository</a>
+        <h2 id="heading_content">Content</h2>
+        <ul class="content"></ul>
+        gulp_place("examples/*.sub.html", "glob_once");
+
+
+        <script>
+            document.addEventListener("paste", function enableInScriptTags(ev){
+                if(!ev.target.contentEditable) return false;
+                ev.preventDefault();
+                document.execCommand('insertText', false, ev.clipboardData.getData('text/plain'));
+            });
+            document.addEventListener("keydown", function enableInScriptTags(ev){
+                if(!ev.target.contentEditable) return false;
+                const { keyCode }= ev;
+                if(keyCode!==9&&keyCode!==13) return false;
+
+                ev.preventDefault();
+                document.execCommand('insertText', false, (keyCode===13 ? "\n" : "")+"    ");
+            });
+            let h2_counter= 0;
+            const content_ul= document.getElementsByClassName('content')[0];
+            Array.from(document.getElementsByTagName('h2')).forEach(function(el){
+                const textContent= el.textContent;
+                if(textContent==="Content") return false;
+                const id= "heading_"+h2_counter++;
+                contentH2({ textContent, id }).mount(el, "replace");
+                contentLI({ textContent, id }).mount(content_ul);
+            });
+            function contentLI({ textContent, id }){
+                const href= "#"+id;
+                const li_el= document.createElement("LI");
+                li_el.appendChild(Object.assign(document.createElement("A"), { textContent, href }));
+                return {
+                    mount(el, type){
+                        el.appendChild(li_el);
+                    }
+                };
+            }
+            function contentH2({ textContent, id }){
+                const h2_el= Object.assign(document.createElement("H2"), { id });
+                const a_el= Object.assign(document.createElement("A"), { textContent: "⇡", href: "#heading_content" });
+                const span_el= Object.assign(document.createElement("SPAN"), { textContent: " "+textContent });
+                h2_el.appendChild(a_el);
+                h2_el.appendChild(span_el);
+                return {
+                    mount(el, type){
+                        if(type!=="replace") el.appendChild(h2_el);
+                        el.parentElement.insertBefore(h2_el, el);
+                        el.remove();
+                    }
+                };
+            }
+            Array.from(document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "xmp")).forEach(function(el){
+                const { previousElementSibling }= currentScript;
+                const { output_el: target }= getTargetEls(previousElementSibling);
+                target.attachShadow({ mode: "open" })
+                const renderExample= debounce(render(el, target.shadowRoot));
+                renderExample();
+                el.addEventListener("keyup", renderExample);
+            });
+            function render(source, target){
+                return function(){
+                    target.innerHTML= source.textContent;
+                };
+            }
+        </script>
+    </article>
+</body>
+</html>

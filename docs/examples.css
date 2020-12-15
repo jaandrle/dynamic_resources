@@ -1,0 +1,112 @@
+body{
+    color: #eeeeee;
+    background: #2b2b2b;
+    padding: 0 0 1em 0;
+}
+a{
+    color: #b8b8ff;
+}
+a:hover{
+    color: white;
+}
+summary {
+    cursor: pointer;
+}
+article{
+    width: 80%;
+    min-width: 75em;
+    max-width: 85em;
+    margin: auto;
+}
+h1, h2 {
+    background: #222;
+    border: 1px solid #222;
+    padding: .5em;
+    margin-left: -.5em;
+}
+h2:target {
+    border-color: currentColor;
+}
+p{
+    font-size: 1.1em;
+}
+.notes{
+    margin-top: .25em;
+    font-size: .75em;
+}
+input, button {
+    background: rgba(0,0,0,1);
+    border: 1px solid #97f497;
+    color: #ffffff;
+    padding: .25em .5em;
+    margin: 0 0 .25em 0;
+}
+input:hover, button:hover, input:focus, button:focus {
+    border-color: currentColor;
+}
+[contenteditable=""]{
+    --edit-color: #97f497;
+    --edit-text: "JavaScript (editable):";
+    display: block;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: .75em;
+    line-height: 1.5em;
+    font-weight: bold;
+    white-space: break-spaces;
+    padding: 1rem;
+    border: .25rem dotted var(--edit-color);
+    background: #222;
+}
+[contenteditable=""]:before{
+    content: var(--edit-text);
+    padding-bottom: 1em;
+    color: var(--edit-color);
+    font-weight: bold;
+    display: block;
+    font-size: .8rem;
+}
+style[contenteditable=""]:before{
+    --edit-text: "CSS (editable):";
+}
+xmp[contenteditable=""]:before{
+    --edit-text: "HTML (editable):";
+}
+@media screen and (max-width: 640px){
+    article{
+        width: 90%;
+        min-width: initial;
+    }
+    [contenteditable=""] {
+        white-space: pre;
+        overflow: scroll;
+        border-right-style: outset;
+    }
+}
+.output, .input{
+    --io-color: #f0e09a;
+    --io-text: "Output (based on following code)";
+    padding: 1rem;
+    margin: 0;
+    font-family: monospace;
+    font-weight: bold;
+    border: .25rem dotted var(--io-color);
+}
+.input{
+    --io-color: #36c7ff;
+    --io-text: "Starting data (JSON):";
+}
+.output::before, .input::before{
+    content: var(--io-text);
+    color: var(--io-color);
+    font-weight: bold;
+    display: block;
+    padding-bottom: 1.5rem;
+}
+.input + .output, .output + [contenteditable=""]{
+    margin-top: -.25rem;
+}
+.test{
+    display: none;
+}
+.example_red_color{ color: #ff9b9b; }
+.example_blue_color{ color: #36c7ff; }
