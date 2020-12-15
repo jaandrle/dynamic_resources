@@ -67,4 +67,4 @@ if(!document.querySelectorAll("[data-remote=true]").length){
 
 ## Documentation and examples
 - [Documentation](./docs/dynamic_resources-namespace.md): [css_](./docs/dynamic_resources-namespace.md#dynamic_resources.css_), [script_](./docs/dynamic_resources-namespace.md#dynamic_resources.script_)
-- [Examples](jaandrle.github.io/dynamic_resources/examples.html)
+- [Examples](https://jaandrle.github.io/dynamic_resources/examples.html)
