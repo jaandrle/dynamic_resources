@@ -45,6 +45,8 @@ input:hover, button:hover, input:focus, button:focus {
     border-color: currentColor;
 }
 [contenteditable=""]{
+    --edit-color: #97f497;
+    --edit-text: "JavaScript (editable):";
     display: block;
     font-family: "Lucida Console", Monaco, monospace;
     font-size: .75em;
@@ -52,17 +54,22 @@ input:hover, button:hover, input:focus, button:focus {
     font-weight: bold;
     white-space: break-spaces;
     padding: 1rem;
-    margin-top: -.25rem;
-    border: .25rem dotted #97f497;
+    border: .25rem dotted var(--edit-color);
     background: #222;
 }
 [contenteditable=""]:before{
-    content: "Input (editable):";
+    content: var(--edit-text);
     padding-bottom: 1em;
-    color: #97f497;
+    color: var(--edit-color);
     font-weight: bold;
     display: block;
     font-size: .8rem;
+}
+style[contenteditable=""]:before{
+    --edit-text: "CSS (editable):";
+}
+xmp[contenteditable=""]:before{
+    --edit-text: "HTML (editable):";
 }
 @media screen and (max-width: 640px){
     article{
@@ -75,17 +82,31 @@ input:hover, button:hover, input:focus, button:focus {
         border-right-style: outset;
     }
 }
-.output{
+.output, .input{
+    --io-color: #f0e09a;
+    --io-text: "Output (based on following code)";
     padding: 1rem;
     margin: 0;
-    border: .25rem dotted #f0e09a;
+    font-family: monospace;
+    font-weight: bold;
+    border: .25rem dotted var(--io-color);
 }
-.output:before{
-    content: "Output:";
-    color: #f0e09a;
+.input{
+    --io-color: #36c7ff;
+    --io-text: "Starting data (JSON):";
+}
+.output::before, .input::before{
+    content: var(--io-text);
+    color: var(--io-color);
     font-weight: bold;
     display: block;
     padding-bottom: 1.5rem;
+}
+.input + .output, .output + [contenteditable=""]{
+    margin-top: -.25rem;
+}
+.test{
+    display: none;
 }
 .example_red_color{ color: #ff9b9b; }
 .example_blue_color{ color: #36c7ff; }

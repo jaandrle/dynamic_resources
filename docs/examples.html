@@ -10,31 +10,57 @@
 <body>
     <script>
         let global_currentScript= null;
+        const getTargetEls= (function(){
+            return function(previousElementSibling){
+                if(!previousElementSibling.classList.contains("pres")) throw new Error(`${previousElementSibling} is not excepted element (with \`className="pres"\` and containig pres such as \`output\`)!`);
+                return Array.from(previousElementSibling.children).filter(({ className })=> className).reduce((o, curr)=> (o[getPreClassName(curr)]= curr, o), {});
+            };
+            function getPreClassName(el){ return Array.from(el.classList).filter(cl=> { switch (cl){ case "output": case "input": case "test": return true; } return false; })[0]+"_el"; }
+        })();
         const example= (function(){
             const store= new WeakMap();
             function example(scriptCode){
                 const currentScript= document.currentScript || global_currentScript;
                 if(store.has(currentScript)) return runExample(scriptCode, store.get(currentScript));
-                const { previousElementSibling: out_el }= currentScript;
-                if(!out_el.classList.contains("output")) throw new Error(`${out_el} is not output element!`);
-                const params= {
-                    out_el,
+                const { previousElementSibling }= currentScript;
+                const pres_els= getTargetEls(previousElementSibling);
+                const params= Object.assign({
                     logOut(...logs){
-                        return logs.map(toP).map(Node.prototype.appendChild.bind(out_el));
+                        return logs.map(toP).map(Node.prototype.appendChild.bind(pres_els.output_el));
+                    },
+                    loadInitData(){
+                        return JSON.parse(pres_els.input_el.textContent.trim());
+                    },
+                    invokeTest(input_obj){
+                        if(!pres_els.test_el) throw new Error("No `<pre class=\"test\">` defined!!!");
+                        const referential_obj= JSON.parse(pres_els.test_el.textContent.trim());
+                        const output= Object.keys(input_obj)
+                        .map(key=> [ key, JSON.stringify(input_obj[key])===referential_obj[key] ])
+                        .reduce((results, [ key, i_result ])=> (results[Number(i_result)].push(key), results), [ [], [] ]);
+                        console.error(`These tests failed: ${ output[0] }`);
+                        console.log(`%cThese tests passed: ${ output[1] }`, "color: lightgreen;");
+                        return true;
                     }
-                };
-                currentScript.onkeyup= ()=> (global_currentScript= currentScript, eval(currentScript.textContent));
+                }, pres_els);
+                currentScript.onkeyup= debounce(()=> (global_currentScript= currentScript, eval(currentScript.textContent)));
                 store.set(currentScript, params);
                 runExample(scriptCode, params);
             }
             function runExample(fun, params){
-                params.out_el.innerHTML= "";
+                params.output_el.innerHTML= "";
                 if(document.readyState!=="complete") return document.addEventListener("DOMContentLoaded", fun.bind(null, params));
                 return fun(params);
             }
             function toP(text){ return Object.assign(document.createElement("P"), { textContent: JSON.stringify(text) }); }
             return example;
         })();
+        function debounce(fun, delay= 250){
+            let time_out_id;
+            return function debounce_inner(...args){
+                if(time_out_id) clearTimeout(time_out_id);
+                time_out_id= setTimeout(fun, delay, ...args);
+            }
+        }
     </script>
     <article>
         <h1>dynamic_resources — Examples</h1>
@@ -48,7 +74,10 @@
             <li><a href="test3.css" target="_blank">test3.css</a></li>
             <li><a href="test4.css" target="_blank">test4.css</a></li>
         </ul>
-        <div class="output css_test"></div>
+        <div class="pres">
+            <div class="output css_test"></div>
+        </div>
+        
         <script contenteditable="">
         example(function({ logOut }){
             
@@ -58,7 +87,7 @@
         
         });
         </script>
-        <!-- example source links -->
+        <p class="notes"><a href="https://github.com/jaandrle/dynamic_resources/blob/master/docs/examples.html#L80" target="_blank">View with highliting (link to source of this file)</a></p>
         <h2>Scripts loading</h2>
         <p>In this test/example you can see async loading of `test1.js`. You can try to change to `test2.js`.</p>
         <ul>
@@ -66,7 +95,10 @@
             <li><a href="test1.js" target="_blank">test1.js</a></li>
             <li><a href="test2.js" target="_blank">test2.js</a></li>
         </ul>
-        <div class="output"></div>
+        <div class="pres">
+            <div class="output"></div>
+        </div>
+        
         <script contenteditable="">
         example(function({ logOut }){
             
@@ -76,7 +108,7 @@
         
         });
         </script>
-        <!-- example source links -->
+        <p class="notes"><a href="https://github.com/jaandrle/dynamic_resources/blob/master/docs/examples.html#L101" target="_blank">View with highliting (link to source of this file)</a></p>
 
 
         <script>
@@ -124,6 +156,19 @@
                         el.parentElement.insertBefore(h2_el, el);
                         el.remove();
                     }
+                };
+            }
+            Array.from(document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "xmp")).forEach(function(el){
+                const { previousElementSibling }= currentScript;
+                const { output_el: target }= getTargetEls(previousElementSibling);
+                target.attachShadow({ mode: "open" })
+                const renderExample= debounce(render(el, target.shadowRoot));
+                renderExample();
+                el.addEventListener("keyup", renderExample);
+            });
+            function render(source, target){
+                return function(){
+                    target.innerHTML= source.textContent;
                 };
             }
         </script>
