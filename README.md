@@ -63,7 +63,7 @@ if(!document.querySelectorAll("[data-remote=true]").length){
     Promise.all([ "path1", "path2" ].map(path=> script_(path, { dataset: { remote: true } })))
     .then(/* onsuccess */)
     .catch(event=> void(event.target.dataset.remote= false));
-    /* probably better login needed (try again) */
+    /* probably better logic needed (eg. something like "try again") */
 }
 ```
 
