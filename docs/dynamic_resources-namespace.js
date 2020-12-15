@@ -57,7 +57,7 @@ const dynamic_resources= (function dynamic_resources_iief(){
      * @param {url} url `href` attribute for `<link>`
      * @param {link_properties} [attrs='null'] Default `<link>` properties are `href` (based on `url`) and {@link dynamic_resources~attrs_link_default}.
      * @returns {Promise}
-     * @.then
+     * @.then {Event} The `load` event.
      * @.catch {Error}
      */
     function css_(url, attrs= null){
@@ -88,7 +88,7 @@ const dynamic_resources= (function dynamic_resources_iief(){
      * @param {url} url `src` attribute for `<script>`
      * @param {script_properties} [attrs='null'] Default properties for `<script>` are `src` (based on `url`) and {@link dynamic_resources~attrs_script_default}.
      * @returns {Promise}
-     * @.then
+     * @.then {Event} The `load` event.
      * @.catch {Error}
      */
     function script_(url, attrs= null){

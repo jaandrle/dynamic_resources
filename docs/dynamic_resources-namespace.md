@@ -57,7 +57,7 @@ It reflects the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Eleme
 
 **Kind**: static method of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources.css_" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L63" title="dynamic_resources-namespace.js:63"><small>(defined@63)</small></a>  
 **Access**: public  
-**.then**:   
+**.then**: <code>Event</code> The `load` event.  
 **.catch**: <code>Error</code>  
 
 | Param | Type | Default | Description |
@@ -75,7 +75,7 @@ It reflects the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Eleme
 
 **Kind**: static method of [<code>dynamic\_resources</code>](#dynamic_resources) <a name="dynamic_resources.script_" href="https://github.com/jaandrle/dynamic_resources/blob/master/bin/dynamic_resources-namespace.js#L94" title="dynamic_resources-namespace.js:94"><small>(defined@94)</small></a>  
 **Access**: public  
-**.then**:   
+**.then**: <code>Event</code> The `load` event.  
 **.catch**: <code>Error</code>  
 
 | Param | Type | Default | Description |

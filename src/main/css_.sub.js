@@ -9,7 +9,7 @@ gulp_place("./internal/createEl.sub.js", "file_once");/* global createEl */
  * @param {url} url `href` attribute for `<link>`
  * @param {link_properties} [attrs='null'] Default `<link>` properties are `href` (based on `url`) and {@link dynamic_resources~attrs_link_default}.
  * @returns {Promise}
- * @.then
+ * @.then {Event} The `load` event.
  * @.catch {Error}
  */
 export function css_(url, attrs= null){
