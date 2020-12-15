@@ -76,7 +76,7 @@
             "jsconfig": "~1.0.0",
             "jsdoc2md__libs_gulp_task": "~1.0.0",
             "jsdoc2md__libs_modifications": "~1.0.0",
-            "examples__libs_gulp_task": "~1.0.1",
+            "examples__libs_gulp_task": "~1.0.2",
             "examples__libs_css": "~1.0.0",
             "examples__libs_nth": "~1.0.0",
             "examples__libs_main": "~1.0.0"

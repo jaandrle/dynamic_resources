@@ -22,7 +22,7 @@ module.exports= function({gulp, scripts, $g, $o, app, cordova_target_device, err
         if(match==="<!-- gulp – task-examples: insert file link -->"){
             return links_paragraphs_buffer.shift();
         }
-        const line= String((t=> t&&t.length+1||1)(file_text.substring(0, chars).match(/\r?\n/g)));
+        const line= String((t=> t&&t.length+3||1)(file_text.substring(0, chars).match(/\r?\n/g)));
         const link= app.homepage.replace("#readme", "/blob/master/")+target_folder+"examples.html#L"+line;
         links_paragraphs_buffer.push(`<p class="notes"><a href="${link}" target="_blank">View with highliting (link to source of this file)</a></p>`);
         return "";
