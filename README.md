@@ -50,6 +50,8 @@ For now(?), there is no support for detecting of duplications – you can implem
 There are 3 different kind of this library (in folder [./bin](./bin)) such as [JavaScript modules | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) version.
 
 ## Usage
+NOTE: The **'_'** is my convetnion for function returning `Promise`.
+
 ```JavaScript
 import { script_ } from "./bin/dynamic_resources-module.min";
 // just simple example
