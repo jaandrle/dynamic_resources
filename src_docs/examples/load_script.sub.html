@@ -12,7 +12,7 @@
 <script contenteditable="">
 example(function({ logOut }){
     
-    dynamic_resources.script_("test1.js")
+    dynamic_resources.script_("test1.js", { dataset: { test: "TEST" } })
     .then(()=> logOut(message_text))
     .catch(logOut.bind(null, "Error"));
 

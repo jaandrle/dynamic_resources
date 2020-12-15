@@ -1,3 +1,4 @@
+gulp_place("./domAssign.sub.js", "file_once");/* global domAssign */
 gulp_place("types/nodeName.type.sub.js", "file_once");
 gulp_place("types/link_properties.type.sub.js", "file_once");
 gulp_place("types/script_properties.type.sub.js", "file_once");
@@ -12,7 +13,7 @@ gulp_place("types/script_properties.type.sub.js", "file_once");
  * @returns {HTMLScriptElement|HTMLLinkElement}
  */
 function createEl(tag_name, attrs, onsuccess, onerror){
-    const element= Object.assign(document.createElement(tag_name), attrs);
+    const element= domAssign(document.createElement(tag_name), attrs);
     element.onload= onsuccess;
     element.onerror= element.onabort= onerror;
     return element;

@@ -24,6 +24,24 @@ const dynamic_resources= (function dynamic_resources_iief(){
      */
     const attrs_link_default= Object.freeze({ rel: "stylesheet", type: "text/css" });
     /**
+     * This slighlty extended version of `Object.assign` (eg. proper assign of `dataset`).
+     * @memberof dynamic_resources
+     * @inner
+     * @param {HTMLElement} target JS represantion of element (in this library typically `<script>`).
+     * @param {link_properties|script_properties} source
+     */
+    function domAssign(target, source){
+        const keys= Object.keys(source);
+        for(let i=0, key;( key= keys[i] ); i++){
+            if(key!=="dataset"){
+                target[key]= source[key];
+            } else {
+                Object.assign(target[key], source[key]);
+            }
+        }
+        return target;
+    }
+    /**
      * Eg. 'script', see [Node.nodeName - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeName).
      * @typedef {String} nodeName
      * @global
@@ -45,7 +63,7 @@ const dynamic_resources= (function dynamic_resources_iief(){
      * @returns {HTMLScriptElement|HTMLLinkElement}
      */
     function createEl(tag_name, attrs, onsuccess, onerror){
-        const element= Object.assign(document.createElement(tag_name), attrs);
+        const element= domAssign(document.createElement(tag_name), attrs);
         element.onload= onsuccess;
         element.onerror= element.onabort= onerror;
         return element;
