@@ -6,17 +6,19 @@ const dynamic_resources= (function dynamic_resources_iief(){
     /**
      * Is a [DOMString](https://developer.mozilla.org/en-US/docs/Web/API/DOMString) representing the URL of an external resource.
      * It reflects the [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-src) attribute (similary for `href`).
-     * @typedef {String} url
+     * @typedef url
+     * @type {string}
      * @global
      */
     /**
      * Is a object representing all [HTMLLinkElement properties](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLinkElement#Properties)!
-     * @typedef {Object} link_properties
+     * @typedef link_properties
+     * @type {object}
      * @global
      */
 
     /**
-     * @property {link_properties}
+     * @type {link_properties}
      * @param {string} rel "stylesheet"
      * @param {string} type "text/css"
      * @memberof dynamic_resources
@@ -43,13 +45,15 @@ const dynamic_resources= (function dynamic_resources_iief(){
     }
     /**
      * Eg. 'script', see [Node.nodeName - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeName).
-     * @typedef {String} nodeName
+     * @typedef nodeName
+     * @type {string}
      * @global
      */
 
     /**
      * Is a object representing all [HTMLScriptElement properties](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement#Properties)!
-     * @typedef {Object} script_properties
+     * @typedef script_properties
+     * @type {object}
      * @global
      */
     /**
@@ -58,8 +62,8 @@ const dynamic_resources= (function dynamic_resources_iief(){
      * @inner
      * @param {nodeName} tag_name Typically 'script'/'link'
      * @param {script_properties|link_properties} attrs Rest of the script attributes.
-     * @param {Function} onsuccess Callback when tag successfully loaded.
-     * @param {Function} onerror Callback when error/abort.
+     * @param {function} onsuccess Callback when tag successfully loaded.
+     * @param {function} onerror Callback when error/abort.
      * @returns {HTMLScriptElement|HTMLLinkElement}
      */
     function createEl(tag_name, attrs, onsuccess, onerror){
@@ -73,7 +77,7 @@ const dynamic_resources= (function dynamic_resources_iief(){
      * @memberof dynamic_resources
      * @public
      * @param {url} url `href` attribute for `<link>`
-     * @param {link_properties} [attrs='null'] Default `<link>` properties are `href` (based on `url`) and {@link dynamic_resources~attrs_link_default}.
+     * @param {link_properties|null} [attrs=`null`] Default `<link>` properties are `href` (based on `url`) and {@link dynamic_resources~attrs_link_default}.
      * @returns {Promise}
      * @.then {Event} The `load` event.
      * @.catch {Error}
@@ -91,7 +95,7 @@ const dynamic_resources= (function dynamic_resources_iief(){
      * Not needed (see [\<script\>: The Script element - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)):
      * - `type: "text/javascript"`: by default => reduntant info
      * - `charset: "utf-8"`: deprecated
-     * @property {script_properties}
+     * @type {script_properties}
      * @param {boolean} async true
      * @param {string} crossOrigin "anonymous"
      * @memberof dynamic_resources
@@ -104,7 +108,7 @@ const dynamic_resources= (function dynamic_resources_iief(){
      * @memberof dynamic_resources
      * @public
      * @param {url} url `src` attribute for `<script>`
-     * @param {script_properties} [attrs='null'] Default properties for `<script>` are `src` (based on `url`) and {@link dynamic_resources~attrs_script_default}.
+     * @param {script_properties|null} [attrs=`null`] Default properties for `<script>` are `src` (based on `url`) and {@link dynamic_resources~attrs_script_default}.
      * @returns {Promise}
      * @.then {Event} The `load` event.
      * @.catch {Error}

@@ -7,7 +7,7 @@ gulp_place("./internal/createEl.sub.js", "file_once");/* global createEl */
  * @memberof dynamic_resources
  * @public
  * @param {url} url `href` attribute for `<link>`
- * @param {link_properties} [attrs='null'] Default `<link>` properties are `href` (based on `url`) and {@link dynamic_resources~attrs_link_default}.
+ * @param {link_properties|null} [attrs=`null`] Default `<link>` properties are `href` (based on `url`) and {@link dynamic_resources~attrs_link_default}.
  * @returns {Promise}
  * @.then {Event} The `load` event.
  * @.catch {Error}

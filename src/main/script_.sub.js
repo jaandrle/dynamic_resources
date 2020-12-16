@@ -7,7 +7,7 @@ gulp_place("./internal/createEl.sub.js", "file_once");/* global createEl */
  * @memberof dynamic_resources
  * @public
  * @param {url} url `src` attribute for `<script>`
- * @param {script_properties} [attrs='null'] Default properties for `<script>` are `src` (based on `url`) and {@link dynamic_resources~attrs_script_default}.
+ * @param {script_properties|null} [attrs=`null`] Default properties for `<script>` are `src` (based on `url`) and {@link dynamic_resources~attrs_script_default}.
  * @returns {Promise}
  * @.then {Event} The `load` event.
  * @.catch {Error}

@@ -8,8 +8,8 @@ gulp_place("types/script_properties.type.sub.js", "file_once");
  * @inner
  * @param {nodeName} tag_name Typically 'script'/'link'
  * @param {script_properties|link_properties} attrs Rest of the script attributes.
- * @param {Function} onsuccess Callback when tag successfully loaded.
- * @param {Function} onerror Callback when error/abort.
+ * @param {function} onsuccess Callback when tag successfully loaded.
+ * @param {function} onerror Callback when error/abort.
  * @returns {HTMLScriptElement|HTMLLinkElement}
  */
 function createEl(tag_name, attrs, onsuccess, onerror){
